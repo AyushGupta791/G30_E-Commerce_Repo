@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+                <li>
+                    <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="" width="50">
+                    {{ item.name }} - ${{ item.price }} x {{ item.quantity }}
+                </li>
+            {% endfor %}
+        </ul>
+        <h3>Total: ${{ total_cost }}</h3>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://kit.fontawesome.com/89a004fb1d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/men.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div id="upper_part" style="position: sticky;top:0;z-index: 99999;">
+            <div id="header" style="background-size: contain;">
+                <img src="{{ url_for('static', filename='images/square.png') }}" alt="" class="square">
+                <div id="h_left">
+    
+                </div>
+                <div id="h_mid">
+                    <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='images/ThreadInn.png') }}" alt=""></a>
+                </div>
+                <div id="h_right" style="position: absolute; right: 20px;">
+                    {% if current_user.is_authenticated %}
+            {% if current_user.role == 'admin' %}
+                <span style="color: mediumspringgreen; padding-right: 20px; font-family: montserrat; font-size: large;">Admin: {{ user.name }}</span>
+            {% else %}
+                <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Hello, {{ user.name }}</span>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+                <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+            </a>
+            {% else %}
+            <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Guest</span>
+            <a href="{{ url_for('register') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+                <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+            </a>
+            {% endif %}
+                </div>
+                <div id="moving_txt" class="moving_txt">
+                    <marquee behavior="" direction="">SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE</marquee>
+                </div>
+            </div>
+        </div>
+        <div id="navbar" class="navbar">
+            <a href="{{ url_for('men') }}">MEN</a>
+            <a href="">WOMEN</a>
+            <a href="">KIDS</a>
+            <a href="">T-SHIRTS</a>
+            <a href="">BOTTOMS</a>
+            <a href="">SHOES</a>
+            <a href="">ACCESSORIES</a>
+            <button id="add_c_nav"><i class="fa-solid fa-cart-shopping fa-2xl" style="color: white;"></i></button>
+        </div>
+    </div>
+        <div id="low_navb" class="low_navb">
+            <div class="l_items">
+                <i class="fa-solid fa-shirt fa-2xl" style="color: #000000;"></i><br><br>
+                EXPLORE
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-heart fa-2xl" style="color: #000000;"></i><br><br>
+                SAVED
+            </div>
+            <div id="profile_ln" style="height: 70px; width: 70px; border-radius: 50%;background-color: #a4a4a4;">
+                .
+            </div>
+            <div class="l_items">
+            <button style="background-color: none; border: none; background: none; cursor: pointer; font-family: montserrat; font-size: 16px;" id="cart_button">
+                <i class="fa-solid fa-cart-shopping fa-2xl"></i><br><br>
+                CART
+            </button>
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000;"></i><br><br>
+                LOG OUT
+            </div>
+        </div>
+        <div id="prod_main">
+        <div id="sidebar" style="background-color: #ffffff;">
+            <div id="filters">
+                <h2 style="text-align: center;">FILTERS</h2>
+            </div>
+                <div id="sizes">
+                    <h4>SIZES</h4>
+                    <button id="b1">XXS</button>
+                    <button id="b2">XS</button>
+                    <button id="b3">S</button> 
+                    <button id="b4">M</button> <br>
+                    <button id="b5">L</button>
+                    <button id="b6">XL</button>
+                    <button id="b7">XXL</button>
+                    <button id="b8">XXL</button>
+                </div>
+                <div id="categories">
+                    <h4>CATEGORIES</h4>
+                    <input type="checkbox"> T-Shirts <br>
+                    <input type="checkbox"> Shirts   <br>
+                    <input type="checkbox"> Jackets <br>
+                    <input type="checkbox"> Tuxedos <br>
+                    <input type="checkbox"> Sweaters <br>
+                    <input type="checkbox"> Pants   <br>
+                    <input type="checkbox"> Shoes   <br>
+                </div>
+                <div id="brands">
+                    <h4>Brands</h4>
+                    <select name="brands" id="brands">
+                        <option value="" disabled>Select</option>
+                        <option value="">Nike</option>
+                        <option value="">Adidas</option>
+                        <option value="">Puma</option>
+                        <option value="">Under Armour</option>
+                        <option value="">New Balance</option>
+                        <option value="">Levis</option>
+                        <option value="">Flying Machine</option>
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div id="price">
+                    <h4>Price</h4>
+                    Min:  $<input type="number" placeholder="Enter minimum price" id="min_price"> <br> <br>
+                    Max:  $<input type="number" placeholder="Enter maximum price" id="max_price"> <br> <br>
+                    <center><button id="show_filter" style="cursor: pointer;">Show</button></center>
+                </div>
+        </div>
+        <div id="prod_sec">
+            <div id="prod_title" style="width: fit-content; margin: auto;">
+                <h1>MEN</h1> <hr> <br>
+            </div>
+            <div id="prod_cards">
+                {% for product in products %}
+            <div class="card card7">
+                <a href="{{ url_for('purchase') }}" style="text-decoration: none;">
+                <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="">
+                <span id="name_prod">{{ product.name }}</span><hr>
+                <span id="desc_prod">{{ product.desc }}</span>
+                </a>
+                <span id="add_to_cart">
+                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" id="add_to_cart_btn">Add To Cart</button>
+                    </form>
+                </span> <br>
+                <span id="price">$ {{ product.price }}</span>
+            </div>
+        {% endfor %}
+        <div id="cart_sec">
+            <h2>Your Cart</h2>
+            {% if session['cart'] %}
+            <ul>
+                {% for item in session['cart'] %}
+                <li>
+                    <div id="cart_item">
+                    <img src="{{ url_for('static', filename='images/' + item['image']) }}" alt="" style="width: 50px;">
+                    <div style="font-weight: bold;">{{ item['name'] }} <br> ${{ item['price'] }} x {{ item['quantity'] }} <br> </div>
+                    <form action="{{ url_for('remove_from_cart', product_id=item['id']) }}" method="POST" style="display:inline; margin-left: auto; width: fit-content;">
+                        <button type="submit" style="background-color: rgb(255, 86, 86); color: white; border: 1px red solid; border-radius: 20px; width: 34px; height: 50px; margin-left: auto;"><i class="fa-solid fa-trash-can fa-xl" style="color: #ffffff;" ></i></button>
+                    </form>
+                </div>
+                </li>
+            {% endfor %}
+            </ul>
+        <h3>Total Price: ${{ total_price() }}</h3>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    
+         </div>
+        </div>
+        </div>
+    </div>
+<script src="{{ url_for('static', filename='js/men.js') }}"></script>
+</body>
+</html>

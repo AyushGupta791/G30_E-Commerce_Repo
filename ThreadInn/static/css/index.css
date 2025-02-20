@@ -1,0 +1,609 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(244, 244, 244);
+    
+}
+#header{
+    background-image: url(../images/abstract-white-canvas-textures-surface_74190-7285.avif); 
+    background-size: contain;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+}
+#h_mid img{
+    height: 43px;
+    width: 214px; 
+}
+.square{
+    position: absolute;
+    margin-top: 47px;
+    height: 50px;
+    width: 50px;
+    transform: rotate(225deg);
+    z-index: 99;
+}
+marquee{
+    overflow: hidden;
+    background-color: black;
+    font-family: montserrat;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+.moving_txt_invisible{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 70px;
+    z-index: -9999;
+}
+.moving_txt{
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 70px;
+    z-index: -9999;
+}
+.navbar_invisible{
+    opacity: 0;
+    transform: scale(0.25) translate(0px,2050px);
+    transition: 520ms;
+}
+.navbar{
+    opacity: 1;
+    transform: scale(1) translate(0px,0px);
+}
+#navbar{
+    display: flex;
+    background-color: rgb(255, 70, 70);
+    margin-top: 18px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+}
+#navbar a{
+    text-decoration: none;
+    font-family: montserrat;
+    color: rgb(255, 255, 255);
+    transform: translateY(-12px);
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    transition: 70ms;
+}
+#navbar a:hover{
+    text-decoration: none;
+    font-family: montserrat;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 70, 70);
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.low_navb_visible{
+    display: flex;
+    opacity: 1;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-color: #ffffff;
+    padding: 50px;
+    align-items: center;
+    justify-items: center;
+    gap: 43px;
+    text-align: center;
+    width: fit-content;
+    font-family: montserrat;
+    border-radius: 50px;
+    padding-top: 7px;
+    padding-bottom: 7px; 
+    position: absolute;
+    z-index: 9999999; 
+    position: fixed; 
+    bottom: 5px;
+    left: 29%; 
+    transition: 340ms;
+}
+.low_navb{ 
+    display: flex;
+    opacity: 0;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-color: #ffffff;
+    padding: 50px;
+    align-items: center;
+    justify-items: center;
+    gap: 43px;
+    text-align: center;
+    width: fit-content;
+    font-family: montserrat;
+    border-radius: 50px;
+    padding-top: 7px;
+    padding-bottom: 7px; 
+    position: absolute;
+    z-index: 9999999; 
+    position: fixed; 
+    bottom: 5px;
+    left: 29%;
+    transition: 340ms;
+}
+#cards{
+    background-image:url(../images/card1_background.png);
+    padding-top: 7px;
+    display: flex;
+    height: 590px;
+    background-size: contain;
+    padding-left: 20px;
+    padding-top: 20px;
+
+}
+.card{
+    width: 214px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    border: none;
+}
+#lux{
+    background-color: #740040;
+    background-size: cover;
+    overflow: hidden;
+}
+#lux_img{
+    transform: scale(0.34);
+    filter: blur(43px);
+}
+#sports{
+    background-color: #f45879;
+    background-size: cover;
+    overflow: hidden;
+}
+#sports_img{
+    filter: blur(43px);
+}
+#merch{
+    background-color: #ffde00;
+    background-size: cover;
+    overflow: hidden;
+}
+#merch_img{
+    filter: blur(43px);
+}
+#watches{
+    background-color: #ffe2a1;
+    background-size: cover;
+    overflow: hidden;
+}
+#watches_img{
+    filter: blur(43px);
+    scale: 0.34;
+
+}
+#lux:hover{
+    background-color: #740040;
+    width: 270px;
+    transition: 340ms;
+}
+#lux:hover #lux_img{
+    filter: blur(0px);
+    transform: scale(0.29);
+    transition: 520ms;
+}
+#sports:hover{
+    background-color: #f45879;
+    width: 270px;
+    transition: 340ms;
+}
+#sports:hover #sports_img{
+    filter: blur(0px);
+    transform: scale(0.59);
+    transition: 520ms;
+}
+#merch:hover{
+    background-color: #ffde00;
+    width: 270px;
+    transition: 340ms;
+}
+#merch:hover #merch_img{
+    filter: blur(0px);
+    transform: scale(0.79);
+    transition: 520ms;
+}
+#watches:hover{
+    background-color: #ffe2a1;
+    width: 270px;
+    transition: 340ms;
+}
+#watches:hover #watches_img{
+    filter: blur(0px);
+    transform: scale(0.79);
+    transition: 520ms;
+}
+#model {
+    height: 520px;
+    width: 520px;
+    background-color: white;
+    border-radius: 52px;
+    margin-left: 45px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    position: absolute;
+    transition: opacity 0.5s ease;
+}
+
+#model_override{
+    position: relative;
+    transform: translateX(-25px);
+    
+}
+.acc{
+    height: 520px;
+    width: 520px;
+    position: absolute;
+    margin-left: 70px;
+    transition: opacity 340ms ease;
+}
+#t_txt, #g_txt, #s_txt{
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 340ms ease;
+}
+#g_txt img{
+    height: 250px;
+    width: 380px;
+    transform: translate(-140px,200px);
+    backdrop-filter: blur(7px); 
+    border-radius: 20px 100px 20px 100px;
+    transition: opacity 340ms ease;
+}
+#s_txt img{
+    height: 250px;
+    width: 430px;
+    backdrop-filter: blur(7px); 
+    transform: translate(-214px,180px);
+    transition: opacity 340ms ease;
+}
+#t_txt img{
+    height: 250px;
+    transform: translate(-214px,200px);
+    backdrop-filter: blur(7px); 
+    transition: opacity 340ms ease;
+}
+#t_txt img{
+    height: 34;
+}
+#m_glasses{
+    z-index: 9999;
+    height: 83px;
+    width: 238px;
+    transform: translate(124px,101.9px);
+}
+#m_shirt{
+    height: 214px;
+    width: 172px;
+    transform: translate(190px,306px);
+    z-index: 9999;
+}
+#m_tux{
+    width: 472px;
+    height: 206px;
+    transform: translate(46px,313px);
+}
+#m_glasses:hover{
+    width: 286px;
+    height: 104px;
+    transform: translate(104px,79px);
+    transition: 340ms;
+}
+#m_shirt:hover{
+    height: 241px;
+    width: 189px;
+    transform: translate(187px,279px);
+    transition: 340ms;
+}
+#m_tux:hover{
+    width: 492px;
+    height: 226px;
+    transform: translate(35px,293px);
+    transition: 340ms;
+}
+#expand_cards{
+    display: flex;
+    height: fit-content;
+}
+#caro_one_txt{
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    width: 450px;
+    height: 680px;
+    transform: translate(837px,-185px);
+}
+.item01 {background: url(../images/caro_shoes.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+.item02 {background: url(../images/caro_sports.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+#women_card{
+    padding-top: 20px; 
+    display: flex; 
+    background-color: white; 
+    background-image: url(../images/card2_background.png); 
+    background-size: auto; 
+    animation: bg 50s linear infinite; 
+}
+#model_female img{
+    width: 520px;
+    height: 520px;
+    border-radius: 70px;
+    padding-left: 20px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+#purse{
+    background-color: #740040;
+    background-size: cover;
+    overflow: hidden;
+}
+#purse_img{
+    transform: scale(0.34);
+    filter: blur(43px);
+}
+#neck{
+    background-color: #f45879;
+    background-size: cover;
+    overflow: hidden;
+}
+#neck_img{
+    filter: blur(43px);
+}
+#merch_w{
+    background-color: #ffde00;
+    background-size: cover;
+    overflow: hidden;
+}
+#merch_w_img{
+    filter: blur(43px);
+    scale: 1.4;
+}
+#dress{
+    background-color: #ffe2a1;
+    background-size: cover;
+    overflow: hidden;
+}
+#dress_img{
+    filter: blur(43px);
+
+
+}
+#purse:hover{
+    background-color: #740040;
+    width: 270px;
+    transition: 340ms;
+}
+#purse:hover #purse_img{
+    filter: blur(0px);
+    transform: scale(0.18);
+    transition: 520ms;
+}
+#neck:hover{
+    background-color: #f45879;
+    width: 270px;
+    transition: 340ms;
+}
+#neck:hover #neck_img{
+    filter: blur(0px);
+    transform: scale(0.59);
+    transition: 520ms;
+}
+#merch_w:hover{
+    background-color: #ffde00;
+    width: 270px;
+    transition: 340ms;
+}
+#merch_w:hover #merch_w_img{
+    filter: blur(0px);
+    transform: scale(0.79);
+    transition: 520ms;
+}
+#dress:hover{
+    background-color: #ffe2a1;
+    width: 270px;
+    transition: 340ms;
+}
+#dress:hover #dress_img{
+    filter: blur(0px);
+    transform: scale(0.79);
+    transition: 520ms;
+}
+#w_coat{
+    position: absolute; 
+    width: 124px; 
+    height: 245px;
+    transform: translate(484px,-41px);
+}
+#w_coat:hover{
+    width: 144px;
+    height: 285px;
+    transform: translate(474px,-45px);
+    transition: 340ms;
+}
+#w_shoesm{
+    position: absolute; 
+    width: 74px;
+    height: 40px;
+    transform: translate(514px,405px);
+}
+#w_shoesm:hover{
+    width: 88px;
+    height: 50px;
+    transition: 340ms;
+}
+#w_shoesf{
+    position: absolute; 
+    width: 101px;
+    height: 72px;
+    transform: translate(1031px,385px);
+}
+#w_shoesf:hover{
+    width: 111px;
+    height: 82px;
+    transition: 340ms;
+}
+#w_hat{
+    position: absolute; 
+    width: 50px; 
+    height: 25px; 
+    transform: translate(890px,196px);
+}
+#w_hat:hover{
+    width:79px;
+    height: 45px;
+    transition: 340ms;
+}
+#w_purse{
+    position: absolute;
+    width: 49px; 
+    height: 30px; 
+    transform: translate(781px,201px);
+}
+#w_purse:hover{
+    width: 59px;
+    height: 40px;
+    transition: 340ms;
+}
+#w_shirts1{
+    position: absolute; 
+    width: 196px; 
+    height: 194px;
+    transform: translate(967px,-49px);
+}
+#w_shirts1:hover{
+    width: 205px;
+    height: 203px;
+    transition: 340ms;
+}
+#w_shirts2{
+    position: absolute; 
+    width: 125px; 
+    height: 154px; 
+    transform: translate(671px);
+}
+#w_shirts2:hover{
+    width: 135px;
+    height: 164px;
+    transition: 340ms;
+}
+#w_jewel{
+    position: absolute; 
+    width: 143px; 
+    height: 78px;
+    transform: translate(1030px,279px);
+}
+#w_jewel:hover{
+    width: 153px;
+    height: 88px;
+    transition: 340ms;
+}
+#w_img{
+    transition: 520ms;
+}
+#partner_logos{
+    height: 651px;
+    width: 403px;
+    position: absolute;
+    transform: translate(14px, 250px);
+    z-index: 999;
+    border-radius: 20px;
+    overflow: hidden;
+}
+#formal_p_img, #shoesm_p_img{
+    position: absolute;
+    transition: 340ms;
+    opacity: 0;
+}
+.devs{
+    margin: 20px;
+    height: 140px;
+    width: 360px;
+    background-color: white;
+    border-radius: 20px;
+}
+#pic_about2, #pic_about3, #pic_about4{
+    opacity: 0;
+    transition: 340ms;
+}
+#aboutp1{
+    scale: 1.1;
+    overflow: hidden;
+    transition: 340ms;
+}
+#aboutp2, #aboutp3, #aboutp4{
+    filter: grayscale(2);
+    overflow: hidden;
+    transition: 340ms;
+}
+#admin_tools h2{
+    color: #252525;
+}
+#admin_tools{
+    padding: 20px;
+    font-family: montserrat;
+    border-radius: 25px;
+    border: #2f2f2f 2px solid;
+    position: fixed;
+    top: 140px;
+    left: 14px;
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    width: fit-content;
+}
+#button_admin button{
+    border: none;
+    border-radius: 20px;
+    background-color: #2f2f2f;
+    color: white;
+    font-family: montserrat;
+    font-weight: bold;
+    padding: 0px 7px;
+}
+#users_list {
+    position: fixed;
+    top: 250px;
+    left: 34px;
+    background-color: white;
+    padding: 20px;
+    z-index: -9999;
+    opacity: 0;
+    transition: opacity 340ms;
+}
+
+#users_list.visible {
+    opacity: 1;
+    z-index: 9999;
+}
+
+@keyframes bg {
+    0%{
+        background-position: 0px 0px;
+    }
+    25%{
+        background-position: 1535px 0px;
+    }
+    50%{
+        background-position: 1535px 587px;
+    }
+    75%{
+        background-position: 0px 587px;
+    }
+    100%{
+        background-position: 0px 0px;
+    }
+    
+}

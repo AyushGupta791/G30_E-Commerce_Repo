@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/89a004fb1d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/purchase.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div id="upper_part" style="position: sticky;top:0;z-index: 99999;">
+            <div id="header" style="background-size: contain;">
+                <img src="{{ url_for('static', filename='images/square.png') }}" alt="" class="square">
+                <div id="h_left">
+    
+                </div>
+                <div id="h_mid">
+                    <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='images/ThreadInn.png') }}" alt=""></a>
+                </div>
+                <div id="h_right" style="position: absolute; right: 20px;">
+                    {% if current_user.is_authenticated %}
+            {% if current_user.role == 'admin' %}
+                <span style="color: mediumspringgreen; padding-right: 20px; font-family: montserrat; font-size: large;">Admin: {{ user.name }}</span>
+            {% else %}
+                <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Hello, {{ user.name }}</span>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+                <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+            </a>
+            {% else %}
+            <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Guest</span>
+            <a href="{{ url_for('register') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+                <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+            </a>
+            {% endif %}
+                </div>
+                <div id="moving_txt" class="moving_txt">
+                    <marquee behavior="" direction="">SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE</marquee>
+                </div>
+            </div>
+        <div id="navbar" class="navbar">
+            <a href="{{ url_for('men') }}">MEN</a>
+            <a href="">WOMEN</a>
+            <a href="">KIDS</a>
+            <a href="">T-SHIRTS</a>
+            <a href="">BOTTOMS</a>
+            <a href="">SHOES</a>
+            <a href="">ACCESSORIES</a>
+        </div>
+    </div>
+        <div id="low_navb" class="low_navb">
+            <div class="l_items">
+                <i class="fa-solid fa-shirt fa-2xl" style="color: #000000;"></i><br>
+                EXPLORE
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-heart fa-2xl" style="color: #000000;"></i><br>
+                SAVED
+            </div>
+            <div id="profile_ln" style="height: 70px; width: 70px; border-radius: 50%;background-color: #a4a4a4;">
+                .
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-cart-shopping fa-2xl"></i><br>
+                CART
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000;"></i><br>
+                LOG OUT
+            </div>
+        </div>
+         <div id="images_buy">
+            <div id="smaller_pics">
+                <div id="small_p_1"><img src="{{ url_for('static', filename='images/prod1_1.webp') }}" alt=""></div>
+                <div id="small_p_2"><img src="{{ url_for('static', filename='images/prod1_2.webp') }}" alt=""></div>
+                <div id="small_p_3"><img src="{{ url_for('static', filename='images/prod1_3.webp') }}" alt=""></div>
+                <div id="small_p_4"><img src="{{ url_for('static', filename='images/prod1_4.webp') }}" alt=""></div>
+            </div>
+            <div id="bigger_pics">
+                <div id="big_p_1"><img src="{{ url_for('static', filename='images/prod1_1.webp') }}" alt=""></div>
+                <div id="big_p_2"><img src="{{ url_for('static', filename='images/prod1_2.webp') }}" alt=""></div>
+                <div id="big_p_3"><img src="{{ url_for('static', filename='images/prod1_3.webp') }}" alt=""></div>
+                <div id="big_p_4"><img src="{{ url_for('static', filename='images/prod1_4.webp') }}" alt=""></div>
+            </div>
+            <div id="product_details">
+                <div id="upper_buy_it">
+                <h1>Captain America: Sam Soldier</h1>
+                <span>Oversized T-Shirts</span> <br><br>
+                <hr>
+                </div>
+                <div id="middle_buy_it">
+                    <br>
+                   <span id="buy_price">$149</span>  <br>
+                   <span id="mrp"> MRP incl. of all taxes </span> <br> <br>
+                   <div id="size_select"> 
+                   Please Select a size. <br>
+                    <button>XXS</button>
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                    <button>XXL</button>
+                    <button>XXXL</button> 
+                    </div> <br>
+                    <div id="quantity">
+                    Quantity <select name="Quantity" id="Quantity">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                    </select> 
+                    </div><br>
+                    <button id="buy_button">Buy Now</button>
+                    <button id="add_button">Add to Cart</button>
+                </div> <br>
+                <div id="lower_buy_it">
+                    <span id="details"> Delivery Details </span> <br>
+                    <input type="number" placeholder="Enter Your Pin Code Here"> <br>
+                    <div id="prod_details">
+                        <h3>Product Details</h3>
+                       <span id="detail_titles"> Material & Care: </span> <br>
+                        Premium Heavy Gauge Fabric <br>
+                        100% Cotton <br>
+                        Machine Wash    <br>
+                        <br>
+                        <span id="detail_titles">Country of Origin: </span> India <br>
+                        <span id="detail_titles">Manufactured & Sold By: </span> <br>
+                        The Souled Store Pvt. Ltd. <br>
+                        224, Tantia Jogani Industrial Premises <br>
+                        J.R. Boricha Marg <br>
+                        Lower Parel (E)
+                        Mumbai - 400 011 <br>
+                        connect@thredinn.com <br>
+                        Customer care no. +91 987654321
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+<script src="{{ url_for('static', filename='js/purchase.js') }}"></script>
+</body>
+</html>

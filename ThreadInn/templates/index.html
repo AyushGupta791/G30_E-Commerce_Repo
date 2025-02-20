@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadInn</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/89a004fb1d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div id="upper_part" style="position: sticky;top:0;z-index: 99999;">
+        <div id="header" style="background-size: contain;">
+            <img src="{{ url_for('static', filename='images/square.png') }}" alt="" class="square">
+            <div id="h_left">
+
+            </div>
+            <div id="h_mid">
+                <a href="{{ url_for('home')}}"><img src="{{ url_for('static', filename='images/ThreadInn.png') }}" alt=""></a>
+            </div>
+            <div id="h_right" style="position: absolute; right: 20px;">
+                {% if current_user.is_authenticated %}
+        {% if current_user.role == 'admin' %}
+            <span style="color: mediumspringgreen; padding-right: 20px; font-family: montserrat; font-size: large;">Admin: {{ user.name }}</span>
+        {% else %}
+            <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Hello, {{ user.name }}</span>
+        {% endif %}
+        <a href="{{ url_for('logout') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+            <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+        </a>
+        {% else %}
+        <span style="color: white; padding-right: 20px; font-family: montserrat; font-size: large;">Guest</span>
+        <a href="{{ url_for('register') }}" style="border: 2px white solid; padding: 7px; border-radius: 50%;">
+            <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
+        </a>
+        {% endif %}
+            </div>
+            <div id="moving_txt" class="moving_txt">
+                <marquee behavior="" direction="">SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOMETHING CALLED TRUE STYLE</marquee>
+            </div>
+        </div>
+        {% if current_user.is_authenticated %}
+        {% if current_user.role == 'admin' %}
+        <div id="admin_tools">
+            <div id="title_admin" style="display: flex;">
+            <h2 >Admin Tools</h2> <button id="display_tools" style="margin-left: auto; font-size: large;
+            font-family: montserrat; height: 34px; width: 34px; background-color: #2e2e2e; color: #ffffff; border-radius: 50%; border: 2px black solid;">-</button> 
+            </div>
+            <div id="button_admin" style="display: flex;">
+            <button style="background-color: mediumspringgreen;" id="show_users">Users</button> &nbsp; &nbsp;
+            <button style="background-color: #f45879;">Products</button> &nbsp; &nbsp;
+            <button style="background-color: coral;">Prices</button> &nbsp; &nbsp;
+            <button style="background-color: aquamarine; color: #000000;">Add</button> &nbsp; &nbsp;
+            <button style="background-color: red;">Remove</button> &nbsp; &nbsp;
+            </div>
+        </div>
+        <div id="users_list">
+            <h3>Current Users:</h3>
+            <ul>
+                {% for user in users_list %}
+                    <li>{{ user.name }} ({{ user.email }})</li>
+                {% else %}
+                    <li>No users found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endif %}
+        <div id="navbar" class="navbar">
+            <a href="{{ url_for('men') }}">MEN</a>
+            <a href="">WOMEN</a>
+            <a href="">KIDS</a>
+            <a href="">T-SHIRTS</a>
+            <a href="">BOTTOMS</a>
+            <a href="">SHOES</a>
+            <a href="">ACCESSORIES</a>
+        </div>
+    </div>
+        <div id="low_navb" class="low_navb">
+            <div class="l_items">
+                <i class="fa-solid fa-shirt fa-2xl" style="color: #000000;"></i><br>
+                EXPLORE
+            </div>
+            <div class="l_items">
+                <i class="fa-solid fa-heart fa-2xl" style="color: #000000;"></i><br>
+                SAVED
+            </div>
+            <a href="{{ url_for('profile') }}"><div id="profile_ln" style="height: 70px; width: 70px; border-radius: 50%;background-color: #a4a4a4;">
+                .
+            </div>
+            </a>
+            <div class="l_items">
+            <button style="background-color: none; border: none; background: none;" id="cart_button">
+                <i class="fa-solid fa-cart-shopping fa-2xl"></i><br>
+                CART
+            </button>
+            </div>
+            <div class="l_items">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" style="text-decoration: none; color: #000000;"><i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000;"></i><br>
+                LOG OUT </a>
+                {% else %}
+                <a href="{{ url_for('register') }}" style="text-decoration: none; color: #000000;"><i class="fa-solid fa-arrow-right-to-bracket fa-2xl" style="color: #000000;"></i></i><br>
+                    LOG IN </a>
+                {% endif %}
+            </div>
+        </div>
+        <div id="caro" style="background-color: rgb(255, 255, 255); height: 700px; overflow: hidden;">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active item00">
+                    <img>
+                    <div #caro_one>
+                        <video src="{{ url_for('static', filename='images/caro_one - Made with Clipchamp.mp4') }}" autoplay loop muted style="height: 110%; width: 100%; transform: translate(0px,-200px);z-index: -9999;"></video>
+                    </div>
+                    <div class="carousel-caption" id="caro_one_txt" style="font-family: montserrat;">
+                      <h1 style="font-weight: bolder;">DESIGNER COLLECTIONS 2025</h1>
+                      <p style="padding-top: 100px;">All the latest products from every top luxury brand like Prada, Louis, Gucci and Ralph Lauren United by the belief that imagination can heal, regenerate, and uplift, the Louis Vuitton Men’s Studio presents the Spring-Summer 2023 Collection. Like a magnified playground, a giant children’s toy racetrack erected in the Cour Carrée of the Louvre becomes a yellow brick road for the imagination: an evolutionary path for the mind where childlike fantasies come to life. 
+                    </p>
+                    <button style="background-color: white; font-weight: bold; border-radius: 20px; padding: 7px 20px; border: none; margin-top: 50px;">OPEN</button>
+                    </div>
+                  </div>
+                  <div class="carousel-item item01">
+                    <img>
+                    <div class="carousel-caption">
+                      <h5>Second slide label</h5>
+                      <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item item02">
+                    <img>
+                    <div class="carousel-caption">
+                      <h5>Third slide label</h5>
+                      <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              
+        </div>
+        <div id="mens_title" style="font-family: montserrat; font-weight: bolder; display: flex; align-items: center; justify-content: center; scale: 2; padding: 20px;"> 
+            <span style="color: #58f4b6;">- - - - </span> MEN'S <span style="color: #58f4b6;"> - - - -</span>
+        </div>
+            <div id="cards" style="background-color: rgb(255, 255, 255); background-size: auto; animation: bg 50s linear infinite">
+                <div id="expand_cards">
+            <div id="lux" class="card">
+                <div id="lux_img">
+                    <img src="{{ url_for('static', filename='images/c1.jpg') }}" alt="">
+                </div>
+                <div id="lux_txt">
+                    <img src="{{ url_for('static', filename='images/Lux_logo.png') }}" alt="" style="position: absolute; transform: translate(-70px,-1040px); width: 142px; height: 142px;">
+                </div>
+            </div>
+            <div id="sports" class="card">
+                <div id="sports_img">
+                    <img src="{{ url_for('static', filename='images/c2.jpg') }}" alt="">
+                </div>
+                <div id="sports_txt">
+                    <img src="{{ url_for('static', filename='images/Casual_logo.png') }}" alt="" style="position: absolute; transform: translate(-70px,-592px);; width: 142px; height: 142px;">
+                </div>
+            </div>
+            <div id="merch" class="card">
+                <div id="merch_img">
+                    <img src="{{ url_for('static', filename='images/c3.jpg') }}" alt="">
+                </div>
+                <div id="merch_txt">
+                    <img src="{{ url_for('static', filename='images/Merch_logo.png') }}" alt="" style="position: absolute; transform: translate(-70px,-457px);; width: 142px; height: 142px;">
+                </div>
+            </div>
+            <div id="watches" class="card">
+                <div id="watches_img">
+                    <img src="{{ url_for('static', filename='images/c4.jpg') }}" alt="">
+                </div>
+                <div id="watches_txt">
+                    <img src="{{ url_for('static', filename='images/Summer_logo.png') }}" alt="" style="position: absolute; transform: translate(-90px,-1258px);; width: 194px; height: 142px;">
+                </div>
+            </div>
+            </div>
+            <div id="model_box">
+                <img src="{{ url_for('static', filename='images/model_shadow.png') }}" alt="" id="model">
+                <div id="model_override">
+                    <div id="model_glasses">
+                        <a href=""><img src="{{ url_for('static', filename='images/model_glasses.png') }}" alt="" id="m_glasses" class="acc"></a>
+                        <div id="g_txt">
+                            <img src="{{ url_for('static', filename='images/eyeware-brand-logos.png') }}" alt="" id="g_img">
+                        </div>
+                    </div>
+                    <div id="model_shirt">
+                        <a href=""><img src="{{ url_for('static', filename='images/model_shirt.png') }}" alt="" id="m_shirt" class="acc"></a>
+                        <div id="s_txt">
+                            <img src="{{ url_for('static', filename='images/Shirt_Brands.png') }}" alt="" id="s_img">
+                        </div>
+                    </div>
+                    <div id="model_tux">
+                        <a href=""><img src="../static/images/model_tux.png" alt="" id="m_tux" class="acc"></a>
+                        <div id="t_txt">
+                            <img src="{{ url_for('static', filename='images/Tux_Brands.png') }}" alt="" id="t_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="women_title" style="font-family: montserrat; font-weight: bolder; display: flex; align-items: center; justify-content: center; scale: 2; padding: 20px; margin-top: 20px;">
+            <span style="color:#f45879;">- - - - </span> WOMEN'S <span style="color:#f45879"> - - - -</span>
+        </div>
+        <div id="women_card">
+            <div id="model_female">
+                <img src="{{ url_for('static', filename='images/model_female.png') }}" alt="">
+            </div>
+            <div id="expand_cards" style="margin-left: 70px; margin-bottom: 20px;">
+                <div id="purse" class="card">
+                    <div id="purse_img">
+                        <img src="{{ url_for('static', filename='images/purse_women.webp') }}" alt="" style="scale: 5;">
+                    </div>
+                    <div id="purse_txt">
+                        <img src="{{ url_for('static', filename='images/purses_logo.png') }}" alt="" style="position: absolute; width: 160px; height: 142px; transform: translate(-79px,-592px);">
+                    </div>
+                </div>
+                <div id="neck" class="card">
+                    <div id="neck_img">
+                        <img src="{{ url_for('static', filename='images/neck_women.jpg') }}" alt="">
+                    </div>
+                    <div id="neck_txt">
+                        <img src="{{ url_for('static', filename='images/neck_logo.png') }}" alt="" style="position: absolute; transform: translate(-70px,-565px); width: 142px; height: 142px;">
+                    </div>
+                </div>
+                <div id="merch_w" class="card">
+                    <div id="merch_w_img">
+                    <img src="{{ url_for('static', filename='images/merch_women.png') }}" alt="">
+                    </div>
+                    <div id="merch_w_txt">
+                        <img src="{{ url_for('static', filename='images/merch_w_logo.png') }}" alt="" style="position: absolute; transform: translate(-70px,-374px);; width: 142px; height: 142px;">
+                    </div>
+                </div>
+                <div id="dress" class="card">
+                    <div id="dress_img">
+                        <img src="{{ url_for('static', filename='images/dress_women.jpg') }}" alt="">
+                    </div>
+                    <div id="dress_txt">
+                        <img src="{{ url_for('static', filename='images/dress_logo.png') }}" alt="" style="position: absolute; transform: translate(-81px,-682px);; width: 142px; height: 178px;">
+                    </div>
+                </div>
+                </div>
+        </div>
+        <div id="partner_logos">
+            <img src="{{ url_for('static', filename='images/formal_partners.png') }}" alt="" id="formal_p_img">
+            <img src=".{{ url_for('static', filename='images/shoesm_partners.png') }}" alt="" id="shoesm_p_img">
+        </div>
+        <div id="w_title" style="display: flex; justify-content: center; align-items: center; font-size: 70px; font-family: algerian;margin-top: 50px;margin-bottom: 50px;">
+            THE WARDROBE
+        </div>
+        <div id="wardrobe">
+            <img src="{{ url_for('static', filename='images/wardrobe.jpg') }}" alt="" style="height:100%; width:100%;" id="w_img">
+        <div id="wardrobe_overide" style="position: absolute; transform: translateY(-500px);">
+            <div id="coat_w_img">
+                <img src="{{ url_for('static', filename='images/coat_wardrobe.png') }}" alt="" id="w_coat">
+            </div>
+            <div id="shoesm_w_img">
+                <img src="{{ url_for('static', filename='images/shoes1_wardrobe.png') }}" alt="" id="w_shoesm">
+            </div>
+            <div id="shoesw_w_img">
+                <img src="{{ url_for('static', filename='images/shoes2_wardrobe.png') }}" alt="" id="w_shoesf">
+            </div>
+            <div id="hat_w_img">
+                <img src="{{ url_for('static', filename='images/hat_wardrobe.png') }}" alt="" id="w_hat">
+            </div>
+            <div id="purse_w_img">
+                <img src="{{ url_for('static', filename='images/purse_wardrobe.png') }}" alt="" id="w_purse">
+            </div>
+            <div id="shirts_w_img">
+                <img src="{{ url_for('static', filename='images/shirts_wardrobe.png') }}" alt="" id="w_shirts1">
+            </div>
+            <div id="shirts2_w_img">
+                <img src="{{ url_for('static', filename='images/shirts2_wardrobe.png') }}" alt="" id="w_shirts2">
+            </div>
+            <div id="jewel_w_img">
+                <img src="{{ url_for('static', filename='images/jewel_wardrobe.png') }}" alt="" id="w_jewel">
+            </div>
+        </div>
+    </div>
+    <div id="about_title" style="display: flex; justify-content: center;align-items: center;font-family: montserrat;padding-top: 50px; padding-bottom: 50px; margin-top: 20px; background-color: black; color: white; font-weight: bolder;">
+        <h1>ABOUT US</h1>
+    </div>
+    <div id="About_Us">
+        <div id="pic_devs" style="height: 524px;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;">
+            <img src="{{ url_for('static', filename='images/about1.png') }}" alt="" id="pic_about1" style="transform: scale(0.5) translate(-1321px,-527px); filter: blur(0.7px);">
+            <img src="{{ url_for('static', filename='images/about2.png') }}" alt="" id="pic_about2" style="position:absolute;transform: scale(0.5) translate(-1390px,-2626px); filter: blur(0.7px);" >
+            <img src="{{ url_for('static', filename='images/about3.png') }}" alt="" id="pic_about3" style="position:absolute;transform: scale(0.5) translate(-1390px,-2626px); filter: blur(0.7px);">
+            <img src="{{ url_for('static', filename='images/about4.png') }}" alt="" id="pic_about4" style="position:absolute;transform: scale(0.5) translate(-1390px,-2626px); filter: blur(0.7px);">
+        </div>
+        <div id="choose_about" style="display: flex; align-items: center; justify-content: center;">
+            <div class="devs" id="aboutp1"><img src="{{ url_for('static', filename='images/about1.png') }}" alt="" style="height: 100%;width: 100%;"></div>
+            <div class="devs" id="aboutp2"><img src="{{ url_for('static', filename='images/about2.png') }}" alt="" style="height: 100%;width: 100%;"></div>
+            <div class="devs" id="aboutp3"><img src="{{ url_for('static', filename='images/about3.png') }}" alt="" style="height: 100%;width: 100%;"></div>
+            <div class="devs" id="aboutp4"><img src="{{ url_for('static', filename='images/about4.png') }}" alt="" style="height: 100%;width: 100%;"></div>
+        </div>
+    </div>
+    </div>
+<script src="{{ url_for('static',filename='js/index.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Role - ThreadInn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 610px;
+        background-color: rgb(232, 232, 232);
+    }
+    .container{
+        background-color: rgb(34, 34, 34,0.9);
+        border: 2px rgb(255, 255, 255) solid;
+        border-radius: 25px;
+        padding: 20px;
+        color: white;
+        font-family: montserrat;
+        font-weight: bold;
+        scale: 1.4;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    }
+    button{
+        background-color: mediumspringgreen;
+        color: black;
+        border: 1px mediumseagreen solid;
+        padding: 7px 20px;
+        font-family: montserrat;
+        font-weight: bold;
+        border-radius: 25px;
+    }
+    select{
+        border: none;
+        padding-left:2px ;
+        padding-right: 20px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 7px;
+        font-family: montserrat;
+        font-weight: bold;
+    }
+    h2{
+        border-bottom: 2px solid grey;
+        text-align: center;
+        color: rgb(255, 238, 238);
+    }
+    button:hover{
+        background-color: rgb(255, 255, 255);
+        border:mediumseagreen solid 1px;
+        color: rgb(2, 184, 114);
+        scale: 1.1;
+        transition: 340ms;
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Set User Role</h2>
+        <form action="{{ url_for('role') }}" method="POST">
+            <label for="role">Select Role:</label>
+            <select name="role" id="role">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select> <br> <br>
+            <center><button type="submit" class="btn btn-primary">Submit</button></center>
+        </form>
+    </div>
+</body>
+</html>
